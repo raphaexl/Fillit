@@ -6,7 +6,7 @@
 /*   By: ebatchas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 20:48:38 by ebatchas          #+#    #+#             */
-/*   Updated: 2018/10/31 05:38:32 by ebatchas         ###   ########.fr       */
+/*   Updated: 2018/11/24 23:25:53 by ebatchas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_only_nhd(char *content);
 int		ft_check_linesep(char *content);
 int		ft_last_check(char **tab);
 char	**ft_check_validity(char **argv);
+int		ft_check_tree_align(char *temp);
 
 void	ft_init_board(char (*board)[MAX_SIZE], int size);
 int		ft_place_tetriminos(char (*board)[MAX_SIZE], t_tetriminos *t,\
@@ -43,4 +44,6 @@ void	ft_print_board(char (*tab)[MAX_SIZE]);
 int		ft_init_fillit(char (*board)[MAX_SIZE], char **argv, \
 		t_tetriminos **t);
 int		ft_fillit(char **argv);
+int		ft_tetriminos_len(t_tetriminos *t);
+int		ft_sqrt(int n);
 #endif

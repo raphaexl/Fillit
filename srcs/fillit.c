@@ -6,7 +6,7 @@
 /*   By: ebatchas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 01:28:32 by ebatchas          #+#    #+#             */
-/*   Updated: 2018/11/01 22:59:40 by ebatchas         ###   ########.fr       */
+/*   Updated: 2018/11/25 00:41:11 by ebatchas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int		ft_init_fillit(char (*board)[MAX_SIZE], char **argv, t_tetriminos **t)
 {
 	char	**tab;
 	int		i;
+	int		size;
 
 	tab = NULL;
 	i = 0;
+	size = 0;
 	if ((tab = ft_check_validity(argv)))
 	{
 		while (tab[i])
@@ -72,19 +74,22 @@ int		ft_init_fillit(char (*board)[MAX_SIZE], char **argv, t_tetriminos **t)
 			ft_push_back_tetriminos(t, ft_create_tetriminos(tab[i], i));
 			i++;
 		}
-		ft_init_board(board, 0);
+		size = ft_sqrt(i * 4);
+		ft_init_board(board, size);
+		ft_putnbr(ft_sqrt(i * 4));
 	}
-	return (0);
+	return (size);
 }
 
 int		ft_fillit(char **argv)
 {
 	char			board[MAX_SIZE][MAX_SIZE];
 	t_tetriminos	*t;
+	int				size;
 
 	t = NULL;
-	ft_init_fillit(board, argv, &t);
-	ft_solve_tetriminos(board, t, 0);
+	size = ft_init_fillit(board, argv, &t);
+	ft_solve_tetriminos(board, t, size);
 	ft_print_board(board);
 	ft_free_tetriminos(&t);
 	return (0);
